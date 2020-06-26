@@ -1,6 +1,6 @@
 # Practica usando Phoenix LiveView
 
-Haciendo un CRUD simple usando LiveView
+Haciendo un CRUD simple usando LiveView.
 
 # PracticaLiveview
 
