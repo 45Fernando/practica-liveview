@@ -12,7 +12,6 @@ defmodule PracticaLiveview.Provinces.Province do
 
   @doc false
   def changeset(province, attrs) do
-    IO.inspect(attrs, label: "PARAMETROS CHANGESET")
     province
     |> cast(attrs, [:name, :countries_id])
     |> validate_required([:name])

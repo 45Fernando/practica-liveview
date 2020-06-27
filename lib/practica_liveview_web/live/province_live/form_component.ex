@@ -41,7 +41,6 @@ defmodule PracticaLiveviewWeb.ProvinceLive.FormComponent do
   end
 
   defp save_province(socket, :new, province_params) do
-    IO.inspect(province_params, label: "PARAMETROS")
     case Provinces.create_province(province_params) do
       {:ok, _province} ->
         {:noreply,
