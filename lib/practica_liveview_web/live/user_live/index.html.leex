@@ -1,4 +1,4 @@
-<h1>Listing Users</h1>
+<h1>Usuarios</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <%= live_modal @socket, PracticaLiveviewWeb.UserLive.FormComponent,
@@ -27,7 +27,7 @@
         <td>
           <span><%= live_redirect "Show", to: Routes.user_show_path(@socket, :show, user) %></span>
           <span><%= live_patch "Edit", to: Routes.user_index_path(@socket, :edit, user) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Esta seguro?"] %></span>
         </td>
       </tr>
     <% end %>

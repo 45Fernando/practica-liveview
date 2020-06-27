@@ -1,0 +1,36 @@
+<h1>Provincias</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, PracticaLiveviewWeb.ProvinceLive.FormComponent,
+    id: @province.id || :new,
+    title: @page_title,
+    action: @live_action,
+    province: @province,
+    countries: @countries,
+    return_to: Routes.province_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="provinces">
+    <%= for province <- @provinces do %>
+      <tr id="province-<%= province.id %>">
+        <td><%= province.name %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.province_show_path(@socket, :show, province) %></span>
+          <span><%= live_patch "Edit", to: Routes.province_index_path(@socket, :edit, province) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: province.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Province", to: Routes.province_index_path(@socket, :new) %></span>

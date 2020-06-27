@@ -16,19 +16,19 @@ defmodule PracticaLiveviewWeb.UserLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit User")
+    |> assign(:page_title, "Editar Usuario")
     |> assign(:user, Accounts.get_user!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New User")
+    |> assign(:page_title, "Nuevo Usuario")
     |> assign(:user, %User{})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Users")
+    |> assign(:page_title, "Usuarios")
     |> assign(:user, nil)
   end
 

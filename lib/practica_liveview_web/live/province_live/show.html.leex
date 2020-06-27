@@ -1,0 +1,22 @@
+<h1>Show Province</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, PracticaLiveviewWeb.ProvinceLive.FormComponent,
+    id: @province.id,
+    title: @page_title,
+    action: @live_action,
+    province: @province,
+    return_to: Routes.province_show_path(@socket, :show, @province) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @province.name %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.province_show_path(@socket, :edit, @province), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.province_index_path(@socket, :index) %></span>

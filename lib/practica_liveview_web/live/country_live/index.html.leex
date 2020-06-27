@@ -1,0 +1,35 @@
+<h1>Listing Countries</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, PracticaLiveviewWeb.CountryLive.FormComponent,
+    id: @country.id || :new,
+    title: @page_title,
+    action: @live_action,
+    country: @country,
+    return_to: Routes.country_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="countries">
+    <%= for country <- @countries do %>
+      <tr id="country-<%= country.id %>">
+        <td><%= country.name %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.country_show_path(@socket, :show, country) %></span>
+          <span><%= live_patch "Edit", to: Routes.country_index_path(@socket, :edit, country) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: country.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Country", to: Routes.country_index_path(@socket, :new) %></span>

@@ -1,0 +1,22 @@
+<h1>Show Country</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, PracticaLiveviewWeb.CountryLive.FormComponent,
+    id: @country.id,
+    title: @page_title,
+    action: @live_action,
+    country: @country,
+    return_to: Routes.country_show_path(@socket, :show, @country) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @country.name %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.country_show_path(@socket, :edit, @country), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.country_index_path(@socket, :index) %></span>
